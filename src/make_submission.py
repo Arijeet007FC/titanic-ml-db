@@ -1,39 +1,41 @@
 import pandas as pd
 import sqlite3
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-import joblib
 
-# Load test data (no Survived column)
+print("🔮 Generating Kaggle submission...")
+
+# Load FULL test data (418 rows exactly)
 conn = sqlite3.connect('../titanic.db')
-df_test = pd.read_sql('SELECT * FROM passengers WHERE survived IS NULL', conn)
+df_test = pd.read_sql('SELECT * FROM passengers WHERE PassengerId > 891', conn)
+print(f"Test set loaded: {len(df_test)} rows")  # Must be 418
 conn.close()
 
-print(f"Test set: {len(df_test)} passengers")
-
-# Prepare features (same as training)
-features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']
-df_test_ml = df_test[features].dropna()
+# Features (fill missing values)
+df_test_ml = df_test[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']].copy()
+df_test_ml['Age'].fillna(df_test_ml['Age'].median(), inplace=True)
+df_test_ml['Fare'].fillna(df_test_ml['Fare'].median(), inplace=True)
 df_test_ml['Sex'] = df_test_ml['Sex'].map({'male': 0, 'female': 1})
 
-# Train model on all training data
+# Train on full training data
 conn = sqlite3.connect('../titanic.db')
-df_train = pd.read_sql('SELECT * FROM passengers WHERE survived IS NOT NULL', conn)
-df_train_ml = df_train[features + ['Survived']].dropna()
+df_train = pd.read_sql('SELECT * FROM passengers WHERE PassengerId <= 891', conn)
+df_train_ml = df_train[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Survived']].dropna()
 df_train_ml['Sex'] = df_train_ml['Sex'].map({'male': 0, 'female': 1})
 
 model = LogisticRegression(max_iter=200)
-model.fit(df_train_ml[features], df_train_ml['Survived'])
+model.fit(df_train_ml[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']], df_train_ml['Survived'])
 
-# Predict
+# Predict ALL 418 test rows
 predictions = model.predict(df_test_ml)
+
+# Kaggle format (PassengerId 892-1309)
 submission = pd.DataFrame({
-    'PassengerId': df_test_ml.index + 1,  # Adjust IDs
+    'PassengerId': df_test['PassengerId'],
     'Survived': predictions
 })
 
 submission.to_csv('../submission.csv', index=False)
-print("submission.csv created! Upload to Kaggle.")
+print("✅ submission.csv created (418 rows)!")
+print(f"Rows: {len(submission)}, Survival rate: {predictions.mean():.1%}")
 print(submission.head())
-joblib.dump(model, '../model.pkl')  # Save model
-print("Model saved as model.pkl")
+print("\n📤 Upload submission.csv to Kaggle!")
