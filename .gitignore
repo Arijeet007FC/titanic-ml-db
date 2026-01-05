@@ -1,0 +1,17 @@
+# OS files
+__pycache__/
+*.pyc
+.DS_Store
+
+# Environment
+venv/
+.env
+
+# Data & DB (large files)
+*.db
+data/*.csv
+!.gitkeep
+
+# IDE
+.vscode/
+.idea/
