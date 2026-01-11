@@ -1,11 +1,11 @@
-# 🚀 **Titanic Survival Predictor** – Your First ML + Database Project!
+# 🚀 **Titanic Survival Predictor** – ML + Database Project!
 
 [
 *74.8% accurate model | SQLite database | Kaggle-ready*
 
 ***
 
-## 🎯 **What you'll build in 30 mins**
+## 🎯 **Lets start the work**
 ```
 📊  Load Titanic data → SQLite database
 📈  Uncover survival secrets (Women 75% vs Men 20%)
