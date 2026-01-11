@@ -5,12 +5,12 @@
 
 ***
 
-## 🎯 **Lets start the work**
+## 🎯 **Built With**
 ```
-📊  Load Titanic data → SQLite database
-📈  Uncover survival secrets (Women 75% vs Men 20%)
-🤖  Train ML model → 74.8% accuracy  
-🏆  Generate Kaggle submission → Leaderboard ranking!
+📊  Titanic dataset → SQLite (1,309 passengers)
+📈  EDA: Women 75% survival vs Men 20%  
+🤖  Logistic Regression: 74.8% accuracy
+🏆  Kaggle submission generator
 ```
 
 ## 🔥 **Live Results**
