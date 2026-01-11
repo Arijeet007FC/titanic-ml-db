@@ -77,8 +77,3 @@ Expected score: 0.77-0.79 (Top 30-40%)
 
 
 
-
-
-[1](https://github.com/Arijeet007FC/titanic-ml-db)
-[2](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/142103432/0706d5f1-1975-44ad-a3f8-0e84d83b4188/image.jpg)
-[3](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/142103432/26f26a65-fae0-4074-9b27-0b9975551454/image.jpg)
