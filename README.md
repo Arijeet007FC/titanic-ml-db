@@ -61,7 +61,7 @@ python src/make_submission.py    # 🏆 Kaggle submission
 ## 🎓 **Perfect for Learning**
 - **Beginners**: Follow notebook → see ML magic
 - **CS Students**: Database schema + ETL pipeline
-- **Portfolio**: Interview-ready project + Kaggle score
+
 
 ***
 
