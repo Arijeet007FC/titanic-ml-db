@@ -11,10 +11,7 @@ DB_PATH = os.path.join(BASE_DIR, "titanic.db")
 TRAIN_CSV = os.path.join(DATA_DIR, "train.csv")
 TEST_CSV = os.path.join(DATA_DIR, "test.csv")
 
-# Debug prints (optional but helpful)
-print("Base dir:", BASE_DIR)
-print("Train CSV:", TRAIN_CSV)
-print("Test CSV:", TEST_CSV)
+
 
 # Connect to SQLite
 conn = sqlite3.connect(DB_PATH)
