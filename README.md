@@ -2,6 +2,7 @@
 
 [
 *74.8% accurate model | SQLite database | Kaggle-ready*
+]
 
 ***
 
