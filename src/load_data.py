@@ -3,8 +3,8 @@ import sqlite3
 import os
 
 # Paths
-DATA_DIR = "../data"
-DB_PATH = "../titanic.db"
+DATA_DIR = "data"
+DB_PATH = "titanic.db"
 TRAIN_CSV = os.path.join(DATA_DIR, "train.csv")
 TEST_CSV = os.path.join(DATA_DIR, "test.csv")
 
